@@ -1,67 +1,87 @@
-import { AxiosResponse, AxiosRequestConfig } from 'axios';
-import { SearchHistoryDto } from '../dto';
+import { AxiosResponse } from 'axios';
+import { PatchRequest, SearchHistoryDto } from '../dto';
 import { UserDto } from '../dto';
 import axios from "axios";
-import {BACKEND_URL, USERS_ROUTE} from "../../shared/consts.ts";
+import { BACKEND_URL, USERS_ROUTE } from "../../shared/consts.ts";
+import { getAccessToken } from "../../shared/utils.ts"
 
 /**
- * UserApi - object-oriented interface
+ * UserApi client
  * @export
  * @class UserApi
- * @extends {BaseAPI}
  */
 export class UserApi {
+    private static baseUrl = BACKEND_URL + USERS_ROUTE;
+
     /**
-     * 
+     * GET /api/v1/users/history
      * @summary Get user's search history
      * @param {number} [page] Number of requested page (default is 1)
      * @param {number} [pageSize] Size of the requested page (default is 20, but must be between 3 and 50)
      * @memberof UserApi
      */
-    public async UsersHistoryGet(page?: number, pageSize?: number) : Promise<{ code: number, history: Array<SearchHistoryDto> | null }> {
-        try {
-            let url = BACKEND_URL + USERS_ROUTE + '/history';
-            const response = await axios.get(url, { params: { page: page, pageSize: pageSize }});
+    public async historyGet(page?: number, pageSize?: number) : Promise<AxiosResponse<Array<SearchHistoryDto>>> {
+        let url = UserApi.baseUrl + '/history';
 
-            return {code: response.status, history: response.data};
-        } catch (err: any) {
-            console.log(err);
-            if (err.response) {
-                return { code: err.response.status, history: null };
-            } else {
-                throw err;
+        return await axios.get(url, {
+            params: {
+                page: page,
+                pageSize: pageSize
+            },
+            withCredentials: true,
+            headers: {
+                Authorization: getAccessToken()
             }
-        }
+        });
     }
+    
     /**
-     * 
+     * GET /api/v1/users/me
      * @summary Get user information via token
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
      * @memberof UserApi
      */
-    public async apiV1UsersMeGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<UserDto>> {
-        return UserApiFp(this.configuration).apiV1UsersMeGet(options).then((request) => request(this.axios, this.basePath));
+    public async meGet() : Promise<AxiosResponse<UserDto>> {
+        let url = UserApi.baseUrl + '/me';
+
+        return await axios.get(url, {
+            withCredentials: true,
+            headers: {
+                Authorization: getAccessToken()
+            }
+        });
     }
+
     /**
-     * 
+     * PATCH /api/v1/users/me
      * @summary Update user with id from token
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
+     * @param {PatchRequest} [patch] Patch documents array
      * @memberof UserApi
      */
-    public async apiV1UsersMePatch(options?: AxiosRequestConfig) : Promise<AxiosResponse<UserDto>> {
-        return UserApiFp(this.configuration).apiV1UsersMePatch(options).then((request) => request(this.axios, this.basePath));
+    public async mePatch(patch: PatchRequest) : Promise<AxiosResponse<UserDto>> {
+        let url = UserApi.baseUrl + '/me';
+
+        return await axios.patch(url, patch, {
+            withCredentials: true,
+            headers: {
+                Authorization: getAccessToken()
+            }
+        })
     }
+
     /**
-     * 
+     * GET /api/v1/users/{userId}
      * @summary Get user by Id
-     * @param {string} userId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
+     * @param {string} userId
      * @memberof UserApi
      */
-    public async apiV1UsersUserIdGet(userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UserDto>> {
-        return UserApiFp(this.configuration).apiV1UsersUserIdGet(userId, options).then((request) => request(this.axios, this.basePath));
+    public async userIdGet(userId: string) : Promise<AxiosResponse<UserDto>> {
+        let url = UserApi.baseUrl + `/${userId}`;
+
+        return await axios.get(url, {
+            withCredentials: true,
+            headers: {
+                Authorization: getAccessToken()
+            }
+        });
     }
 }

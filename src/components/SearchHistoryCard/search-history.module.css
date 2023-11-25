@@ -1,0 +1,60 @@
+.search_history_card__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.search_history_card__label {
+    background: rgba(107, 132, 153, 0.15);
+    border-radius: 8px;
+    color: #281B15;
+    font-size: 17px;
+    min-height: 35px;
+    font-family: Montserrat, serif;
+    font-weight: 500;
+}
+
+.search_history_card__top_element {
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background: #F0F0F0;
+    padding: 30px;
+    min-width: 40vw;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.search_history_card__top_element_no_content {
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background: #F0F0F0;
+    padding: 30px;
+    min-width: 40vw;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.search_history__no_content {
+    color: rgba(40, 27, 21, 0.62);
+    font-size: 20px;
+    font-family: Montserrat;
+    font-weight: 600;
+    line-height: 24px;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+}
+
+.search_history__pagination {
+    display: flex;
+    justify-content: center;
+}

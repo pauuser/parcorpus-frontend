@@ -30,14 +30,14 @@ export interface UserRegistrationDto {
      * @type {string}
      * @memberof UserRegistrationDto
      */
-    countryName: string;
+    country_name: string;
 
     /**
      * User's language short name
      * @type {string}
      * @memberof UserRegistrationDto
      */
-    languageShortName: string;
+    language_short_name: string;
 
     /**
      * User's password

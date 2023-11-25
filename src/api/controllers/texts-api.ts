@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { ConcordanceDto } from '../dto';
 import { FullTextDto } from '../dto';
 import { TextsDto } from '../dto';
-import { BACKEND_URL, TEXTS_ROUTE } from "../../shared/consts.ts";
+import { BACKEND_URL, BACKEND_TEXTS_ROUTE } from "../../shared/consts.ts";
 import axios from "axios";
 import { getAccessToken } from "../../shared/utils.ts";
 
@@ -12,7 +12,7 @@ import { getAccessToken } from "../../shared/utils.ts";
  * @class TextsApi
  */
 export class TextsApi {
-    private static baseUrl = BACKEND_URL + TEXTS_ROUTE;
+    private static baseUrl = BACKEND_URL + BACKEND_TEXTS_ROUTE;
 
     /**
      * GET /api/v1/texts/concordance

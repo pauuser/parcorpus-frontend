@@ -1,5 +1,5 @@
 import { JobDto } from '../dto';
-import { BACKEND_URL, JOBS_ROUTE } from "../../shared/consts.ts";
+import { BACKEND_URL, BACKEND_JOBS_ROUTE } from "../../shared/consts.ts";
 import axios, { AxiosResponse } from "axios";
 import { getAccessToken } from "../../shared/utils.ts";
 
@@ -9,7 +9,7 @@ import { getAccessToken } from "../../shared/utils.ts";
  * @class JobsApi
  */
 export class JobsApi {
-    private static baseUrl = BACKEND_URL + JOBS_ROUTE;
+    private static baseUrl = BACKEND_URL + BACKEND_JOBS_ROUTE;
 
     /**
      * GET /api/v1/jobs

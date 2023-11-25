@@ -1,0 +1,24 @@
+.texts_card__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.texts_card__label {
+    background: rgba(107, 132, 153, 0.15);
+    border-radius: 8px;
+    color: #281B15;
+    font-size: 17px;
+    min-height: 35px;
+    font-family: Montserrat, serif;
+    font-weight: 500;
+}
+
+.texts_card__top_element {
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background: #F0F0F0;
+    padding: 30px;
+    min-width: 40vw;
+}

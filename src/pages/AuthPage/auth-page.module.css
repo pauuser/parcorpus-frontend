@@ -1,0 +1,28 @@
+.card__wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 40px);
+}
+
+.card__card {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    min-height: calc(100vh - 80px);
+}
+
+.card__top_element {
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background: #F0F0F0;
+    max-width: 80%;
+    max-height: 80%;
+    padding: 30px;
+}
+
+.main_upperbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

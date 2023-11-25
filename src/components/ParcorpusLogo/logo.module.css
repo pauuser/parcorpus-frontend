@@ -1,0 +1,11 @@
+.logo {
+    color: rgba(0, 0, 0, 0.20);
+    font-size: 30px;
+    font-family: Montserrat, serif;
+    font-weight: 800;
+    font-style: normal;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-decoration: none;
+}

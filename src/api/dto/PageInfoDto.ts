@@ -23,12 +23,12 @@ export interface PageInfoDto {
      * @type {number}
      * @memberof PageInfoDto
      */
-    totalPages: number;
+    total_pages: number;
 
     /**
      * Total number of objects
      * @type {number}
      * @memberof PageInfoDto
      */
-    totalCount: number;
+    total_count: number;
 }

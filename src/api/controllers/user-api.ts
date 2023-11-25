@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
-import { PatchRequest, SearchHistoryDto } from '../dto';
+import {PatchRequest, SearchHistoryDto} from '../dto';
 import { UserDto } from '../dto';
 import axios from "axios";
-import { BACKEND_URL, USERS_ROUTE } from "../../shared/consts.ts";
+import { BACKEND_URL, BACKEND_USERS_ROUTE } from "../../shared/consts.ts";
 import { getAccessToken } from "../../shared/utils.ts"
 
 /**
@@ -11,7 +11,7 @@ import { getAccessToken } from "../../shared/utils.ts"
  * @class UserApi
  */
 export class UserApi {
-    private static baseUrl = BACKEND_URL + USERS_ROUTE;
+    private static baseUrl = BACKEND_URL + BACKEND_USERS_ROUTE;
 
     /**
      * GET /api/v1/users/history
@@ -20,13 +20,13 @@ export class UserApi {
      * @param {number} [pageSize] Size of the requested page (default is 20, but must be between 3 and 50)
      * @memberof UserApi
      */
-    public async historyGet(page?: number, pageSize?: number) : Promise<AxiosResponse<Array<SearchHistoryDto>>> {
+    public async historyGet(page?: number, pageSize?: number) : Promise<AxiosResponse<SearchHistoryDto>> {
         let url = UserApi.baseUrl + '/history';
 
         return await axios.get(url, {
             params: {
                 page: page,
-                pageSize: pageSize
+                page_size: pageSize
             },
             withCredentials: true,
             headers: {
@@ -42,6 +42,8 @@ export class UserApi {
      */
     public async meGet() : Promise<AxiosResponse<UserDto>> {
         let url = UserApi.baseUrl + '/me';
+
+        console.log(url)
 
         return await axios.get(url, {
             withCredentials: true,

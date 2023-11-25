@@ -32,14 +32,14 @@ export interface SearchHistoryRecordDto {
      * @type {string}
      * @memberof SearchHistoryRecordDto
      */
-    sourceLanguageShortName: string;
+    source_language_short_name: string;
 
     /**
      * Destination language
      * @type {string}
      * @memberof SearchHistoryRecordDto
      */
-    destinationLanguageShortName: string;
+    destination_language_short_name: string;
 
     /**
      * Filters applied
@@ -53,5 +53,5 @@ export interface SearchHistoryRecordDto {
      * @type {Date}
      * @memberof SearchHistoryRecordDto
      */
-    queryTimestampUtc: Date;
+    query_timestamp_utc: Date;
 }

@@ -1,0 +1,51 @@
+.searchBox__container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 11px;
+    row-gap: 11px;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-width: 60%;
+    max-width: 80%
+}
+
+.searchBox__selectors {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    column-gap: 11px;
+}
+
+.searchBox__box {
+    background: #FFF;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    max-width: 65%;
+    font-weight: 500;
+}
+
+.searchBox__select {
+    background: #FFF;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    font-family: Montserrat, serif;
+    font-weight: 600;
+    color: #281B15;
+}
+
+.auth_card__select_popup{
+    background: #F0F0F0;
+    min-width: calc(min(250px, 60vw));
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.searchBox__button {
+    background: #BA6B3A;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}
+
+.searchBox__magnifier {
+    color: #ffffff;
+}

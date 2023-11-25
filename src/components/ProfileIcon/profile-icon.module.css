@@ -1,0 +1,16 @@
+.profile__button {
+    background: rgba(0, 0, 0, 0.10);
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.20);
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: #281B15;
+    font-size: 15px;
+    font-family: Montserrat, serif;
+    font-weight: 600;
+}
+
+.profile__button__logo {
+    color: #281B15;
+}

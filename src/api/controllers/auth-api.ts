@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { LoginDto } from '../dto';
 import { TokensDto } from '../dto';
 import { UserRegistrationDto } from '../dto';
-import { AUTH_ROUTE, BACKEND_URL } from "../../shared/consts.ts";
+import { BACKEND_AUTH_ROUTE, BACKEND_URL } from "../../shared/consts.ts";
 import axios from "axios";
 
 /**
@@ -11,7 +11,7 @@ import axios from "axios";
  * @class AuthApi
  */
 export class AuthApi {
-    private static baseUrl = BACKEND_URL + AUTH_ROUTE;
+    private static baseUrl = BACKEND_URL + BACKEND_AUTH_ROUTE;
 
     /**
      * POST /api/v1/login
@@ -21,9 +21,12 @@ export class AuthApi {
      */
     public async loginPost(body: LoginDto) : Promise<AxiosResponse<TokensDto>> {
         let url = AuthApi.baseUrl + '/login';
+        console.log(body.email);
+        console.log(body.password);
 
         return await axios.post(url, body);
     }
+
     /**
      * POST /api/v1/auth/refresh
      * @summary Refresh token
@@ -35,13 +38,14 @@ export class AuthApi {
 
         return await axios.post(url, body);
     }
+
     /**
      * POST /api/v1/auth/register
      * @summary Create new account
      * @param {UserRegistrationDto} [body] Registration information
      * @memberof AuthApi
      */
-    public async apiV1AuthRegisterPost(body: UserRegistrationDto) : Promise<AxiosResponse<TokensDto>> {
+    public async registerPost(body: UserRegistrationDto) : Promise<AxiosResponse<TokensDto>> {
         let url = AuthApi.baseUrl + '/register';
 
         return await axios.post(url, body);

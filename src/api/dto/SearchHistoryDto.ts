@@ -12,7 +12,7 @@ export interface SearchHistoryDto {
      * @type {PageInfoDto}
      * @memberof SearchHistoryDto
      */
-    pageInfo: PageInfoDto;
+    page_info: PageInfoDto;
 
     /**
      * The search history

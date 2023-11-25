@@ -9,12 +9,12 @@ export interface TokensDto {
      * @type {string}
      * @memberof TokensDto
      */
-    accessToken: string;
+    access_token: string;
 
     /**
      * Refresh token
      * @type {string}
      * @memberof TokensDto
      */
-    refreshToken: string;
+    refresh_token: string;
 }

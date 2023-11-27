@@ -19,6 +19,9 @@ export const AppRouter = () => {
             },
             (error) => {
                 console.log(error)
+                if (error.status === 401) {
+                    console.log('REFRESH!!')
+                }
             }
         );
     }, []);

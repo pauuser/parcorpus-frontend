@@ -3,5 +3,26 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 35px;
+}
+
+.profile_page_wrapper {
+    display: flex;
+    flex-direction: column;
     gap: 15px;
+}
+
+.profile_page_profile_card {
+    width: 48%;
+}
+
+@media only screen and (max-width: 800px) {
+    .profile_page_profile_card {
+        width: 90vw
+    }
+}
+
+.profile_page_upper {
+    display: flex;
+    flex-direction: column;
 }

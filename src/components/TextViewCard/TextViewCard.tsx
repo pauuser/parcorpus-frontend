@@ -4,6 +4,8 @@ import {Xmark} from "@gravity-ui/icons";
 import React, {ReactNode, useEffect, useState} from "react";
 import {TextsApi} from "../../api";
 import {SentencePairView} from "../SentencePairView/SentencePairView.tsx";
+import useWindowDimensions from "../../hooks/WindowSizeHook.ts";
+import {getMaximumCardsNumber} from "../../shared/utils.ts";
 
 interface TextViewCardProps {
     action: () => void
@@ -11,7 +13,12 @@ interface TextViewCardProps {
 }
 
 export const TextViewCard = (props: TextViewCardProps) => {
-    const [state, setState] = React.useState({page: 1, pageSize: 5, total: 10, total_pages: 2});
+    const { height, width } = useWindowDimensions();
+
+    const [state, setState] = React.useState({page: 1,
+        pageSize: getMaximumCardsNumber(height, width / 15, 100),
+        total: 10,
+        total_pages: 2});
 
     const handleUpdate: PaginationProps['onUpdate'] = (page, pageSize) => {
         setState((prevState) => ({...prevState, page, pageSize}));
@@ -58,27 +65,33 @@ export const TextViewCard = (props: TextViewCardProps) => {
     }, []);
 
     const getCard = () => {
-        return <div className={styles.text_view_card__card_wrapper}>
-            <div className={styles.text_view_card__upperbar}>
-                <div className={styles.text_view_card__title_author}>
-                    <span className={styles.text_view_card__title}>{title}</span>
-                    <span className={styles.text_view_card__author}>{author}</span>
+        return (
+            <div className={styles.text_view_card__card_wrapper}>
+                <div className={styles.text_view_card__upperbar}>
+                    <div className={styles.text_view_card__title_author}>
+                        <span className={styles.text_view_card__title}>{title}</span>
+                        <span className={styles.text_view_card__author}>{author}</span>
+                    </div>
+                    <Button className={styles.text_view_card__button}
+                            onClick={props.action}>
+                        <Xmark />
+                    </Button>
                 </div>
-                <Button className={styles.text_view_card__button}
-                        onClick={props.action}>
-                    <Xmark />
-                </Button>
+                <div className={styles.text_view_card__sentences}>
+                    <div className={styles.text_view_card__text}>
+                        {sentences}
+                    </div>
+                    <div className={styles.text_view_card__pagination}>
+                        <Pagination page={state.page}
+                                    pageSize={state.pageSize}
+                                    total={state.total}
+                                    onUpdate={handleUpdate}
+                                    className={styles.text_view_card__paging_element}
+                                    compact={true}/>
+                    </div>
+                </div>
             </div>
-            <div className={styles.text_view_card__sentences}>
-                    {sentences}
-                <Pagination page={state.page}
-                            pageSize={state.pageSize}
-                            total={state.total}
-                            onUpdate={handleUpdate}
-                            className={styles.search_history__pagination}
-                            compact={true}/>
-            </div>
-        </div>
+        )
     }
 
     return (

@@ -5,12 +5,18 @@ import {Magnifier} from "@gravity-ui/icons";
 import {Pagination, PaginationProps} from '@gravity-ui/uikit';
 import React, {ReactNode, useEffect, useState} from "react";
 import {UserApi} from "../../api";
-import {buildLanguagesString, saveToStorage} from "../../shared/utils.ts";
+import {buildLanguagesString, getMaximumCardsNumber, saveToStorage} from "../../shared/utils.ts";
 import {languagesInverse} from "../../shared/regionalInfo.ts";
 import {useNavigate} from "react-router-dom";
+import useWindowDimensions from "../../hooks/WindowSizeHook.ts";
 
 export const SearchHistoryCard = () => {
-    const [state, setState] = React.useState({page: 1, pageSize: 5, total: 10, total_pages: 2});
+    const { height } = useWindowDimensions();
+
+    const [state, setState] = React.useState({page: 1,
+        pageSize: getMaximumCardsNumber(height, 80, height / 1.8),
+        total: 10,
+        total_pages: 2});
 
     const handleUpdate: PaginationProps['onUpdate'] = (page, pageSize) => {
         setState((prevState) => ({...prevState, page, pageSize}));
@@ -71,7 +77,9 @@ export const SearchHistoryCard = () => {
 
         return <Card size="l"
                      className={styles.search_history_card__top_element}>
-                    {history}
+                    <div className={styles.search_history_card__cards}>
+                        {history}
+                    </div>
                     <Pagination page={state.page}
                                 pageSize={state.pageSize}
                                 total={state.total}

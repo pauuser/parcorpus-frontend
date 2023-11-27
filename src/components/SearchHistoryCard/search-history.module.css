@@ -21,12 +21,19 @@
     background: #F0F0F0;
     padding: 30px;
     min-width: 40vw;
-    min-height: 60vh;
+    height: calc(100vh - 250px);
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: stretch;
     justify-content: space-between;
+}
+
+.search_history_card__cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px
 }
 
 .search_history_card__top_element_no_content {
@@ -35,7 +42,7 @@
     background: #F0F0F0;
     padding: 30px;
     min-width: 40vw;
-    min-height: 60vh;
+    height: calc(100vh - 250px);
     display: flex;
     flex-direction: column;
     gap: 10px;

@@ -8,12 +8,18 @@ import {ConcordanceElement} from "../../components/ConcordanceElement/Concordanc
 import React, {ReactNode, useEffect, useState} from "react";
 import {Pagination, PaginationProps} from "@gravity-ui/uikit";
 import {TextsApi} from "../../api";
-import {getFromStorage} from "../../shared/utils.ts";
+import {getFromStorage, getMaximumCardsNumber} from "../../shared/utils.ts";
+import useWindowDimensions from "../../hooks/WindowSizeHook.ts";
 
 const SearchPage = () => {
     const { user } = useUserContext();
 
-    const [state, setState] = React.useState({page: 1, pageSize: 5, total: 10, total_pages: 2});
+    const { height } = useWindowDimensions();
+
+    const [state, setState] = React.useState({page: 1,
+        pageSize: getMaximumCardsNumber(height, 200, 100),
+        total: 10,
+        total_pages: 2});
 
     const handleUpdate: PaginationProps['onUpdate'] = (page, pageSize) => {
         setState((prevState) => ({...prevState, page, pageSize}));
@@ -69,20 +75,23 @@ const SearchPage = () => {
                 </div>
         }
 
-        return <>
-            {concordance}
-            <Pagination page={state.page}
-                        pageSize={state.pageSize}
-                        total={state.total}
-                        onUpdate={handleUpdate}
-                        className={styles.search_history__pagination}
-                        compact={true}/>
-        </>
+        return <div className={styles.search_page__results_wrapper}>
+            <div className={styles.search_page__concordance_wrapper}>
+                {concordance}
+            </div>
+            <div className={styles.search_page__pagination_container}>
+                <Pagination page={state.page}
+                            pageSize={state.pageSize}
+                            total={state.total}
+                            onUpdate={handleUpdate}
+                            compact={true}/>
+            </div>
+        </div>
     }
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
-            updateConcordance(1, 5);
+            updateConcordance(1, getMaximumCardsNumber(height, 200, 100));
         }
     }
 
@@ -96,13 +105,15 @@ const SearchPage = () => {
             <div className={styles.search_page__wrapper}>
                 <div className={styles.search_page__filters}>
                     <FiltersCard onApply={() => {
-                        updateConcordance(1, 5)
+                        updateConcordance(1, getMaximumCardsNumber(height, 200, 100))
                     }} />
                 </div>
                 <div className={styles.search_page__main_area_wrapper}>
-                    <SearchBox onButtonClick={() => {
-                        updateConcordance(1, 5)}
-                    } />
+                    <div>
+                        <SearchBox onButtonClick={() => {
+                            updateConcordance(1, getMaximumCardsNumber(height, 200, 100))}
+                        } />
+                    </div>
                     {getCard()}
                 </div>
             </div>

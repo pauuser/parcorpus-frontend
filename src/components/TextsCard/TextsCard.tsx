@@ -4,7 +4,8 @@ import {ProfileElementCard} from "../ProfileElementCard/ProfileElementCard.tsx";
 import {Eye} from "@gravity-ui/icons";
 import React, {ReactNode, useEffect, useState} from "react";
 import {TextsApi} from "../../api";
-import {buildTextSubtitle, buildTextTitle} from "../../shared/utils.ts";
+import {buildTextSubtitle, buildTextTitle, getMaximumCardsNumber} from "../../shared/utils.ts";
+import useWindowDimensions from "../../hooks/WindowSizeHook.ts";
 
 interface TextsCardProps {
     setState: () => void
@@ -12,7 +13,12 @@ interface TextsCardProps {
 }
 
 export const TextsCard = (props: TextsCardProps) => {
-    const [state, setState] = React.useState({page: 1, pageSize: 5, total: 10, total_pages: 2});
+    const { height } = useWindowDimensions();
+
+    const [state, setState] = React.useState({page: 1,
+        pageSize: getMaximumCardsNumber(height, 80, height / 1.8),
+        total: 10,
+        total_pages: 2});
 
     const handleUpdate: PaginationProps['onUpdate'] = (page, pageSize) => {
         setState((prevState) => ({...prevState, page, pageSize}));
@@ -73,7 +79,9 @@ export const TextsCard = (props: TextsCardProps) => {
 
         return <Card size="l"
                      className={styles.texts_card__top_element}>
-            {texts}
+            <div className={styles.texts__texts}>
+                {texts}
+            </div>
             <Pagination page={state.page}
                         pageSize={state.pageSize}
                         total={state.total}

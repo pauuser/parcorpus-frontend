@@ -43,3 +43,7 @@ export const saveToStorage = (key: string, value: string) => {
 export const getFromStorage = (key: string) => {
     return localStorage.getItem(key);
 }
+
+export const getMaximumCardsNumber = (height: number, cardSize: number, additionalMinus: number) => {
+    return Math.floor((height - additionalMinus) / cardSize);
+}

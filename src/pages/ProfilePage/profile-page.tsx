@@ -24,17 +24,23 @@ const ProfilePage = () => {
         }
         else {
             return (
-                <div>
-                    <div>
-                        <ParcorpusLogo />
-                    </div>
-                    <div>
-                        <UserData {...userDto} />
+                <div className={styles.profile_page_wrapper}>
+                    <div className={styles.profile_page_upper}>
+                        <div>
+                            <ParcorpusLogo />
+                        </div>
+                        <div>
+                            <UserData {...userDto} />
+                        </div>
                     </div>
                     <div className={styles.profile_page__containers}>
-                        <SearchHistoryCard />
-                        <TextsCard setState={() => setViewingText(true)}
-                                   setTextId={(num: number) => setTextId(num)} />
+                        <div className={styles.profile_page_profile_card}>
+                            <SearchHistoryCard />
+                        </div>
+                        <div className={styles.profile_page_profile_card}>
+                            <TextsCard setState={() => setViewingText(true)}
+                                       setTextId={(num: number) => setTextId(num)} />
+                        </div>
                     </div>
                 </div>
             )

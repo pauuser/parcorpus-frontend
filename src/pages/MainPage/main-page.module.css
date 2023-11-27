@@ -4,7 +4,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    min-height: calc(100vh - 40px);
+    min-height: calc(100vh - 60px);
 }
 
 .main_title__wrapper {

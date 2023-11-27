@@ -3,13 +3,12 @@
     border-radius: 8px;
     background: #F0F0F0;
     padding: 30px;
-    max-width: calc(min(99vw, 80%));
-    min-height: 60vh;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-content: center;
     justify-content: space-between;
+    width: 100%;
 }
 
 .filters_card__button {
@@ -21,7 +20,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
+    height: 35px;
+    font-size: 19px;
 }
 
 .filters_card__years {
@@ -29,17 +29,27 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-    gap: 20px
+    gap: 20px;
 }
 
 .filters_card__title {
     display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: bold;
     border-radius: 8px;
     max-width: 80px;
     height: 40px;
     background: rgba(107, 132, 153, 0.15);
     font-size: large;
+}
+
+.filters_card__upper_part {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filters_card__titlediv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

@@ -1,16 +1,19 @@
 .text_view_card__card_wrapper {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
+    min-height: 80vh;
 }
 
 .text_view_card__title {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
 }
 
+
+
 .text_view_card__author {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.50);
 }
@@ -32,16 +35,26 @@
 .text_view_card__sentences {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 25px;
+    min-height: 70vh
+}
+
+.text_view_card__text {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text_view_card__pagination {
+    display: flex;
+    justify-content: center;
 }
 
 .text_view_card__button {
-    background: rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     display: flex;
-    align-items: flex-end;
-    justify-items: center;
-    justify-content: center;
+    flex-direction: column;
     color: #281B15;
 }
 
@@ -56,3 +69,4 @@
     flex-direction: row;
     justify-content: space-between;
 }
+

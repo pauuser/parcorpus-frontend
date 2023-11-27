@@ -10,8 +10,12 @@ import {Pagination, PaginationProps} from "@gravity-ui/uikit";
 import {TextsApi} from "../../api";
 import {getFromStorage, getMaximumCardsNumber} from "../../shared/utils.ts";
 import useWindowDimensions from "../../hooks/WindowSizeHook.ts";
+import {useSearchParams} from "react-router-dom";
+import {parametersList} from "../../shared/consts.ts";
 
 const SearchPage = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const { user } = useUserContext();
 
     const { height } = useWindowDimensions();
@@ -31,17 +35,18 @@ const SearchPage = () => {
     const updateConcordance = (page: number, pageSize: number) => {
         const api = new TextsApi();
 
-        api.concordanceGet(getFromStorage("word") as string,
-            getFromStorage("sourceLanguage") as string,
-            getFromStorage("targetLanguage") as string,
+        api.concordanceGet(searchParams.get("word") as string,
+            searchParams.get("sourceLanguage") as string,
+            searchParams.get("targetLanguage") as string,
             page,
             pageSize,
-            getFromStorage("genre") as string,
-            Number(getFromStorage("startYear")),
-            Number(getFromStorage("endYear")),
-            getFromStorage("author") as string).then(
+            searchParams.get("genre") as string,
+            Number(searchParams.get("startYear")),
+            Number(searchParams.get("endYear")),
+            searchParams.get("author") as string).then(
             (result) => {
                 const concordance = result.data;
+                console.log(concordance)
 
                 const {total_count, total_pages} = concordance.page_info;
                 const total = total_count;
@@ -65,6 +70,15 @@ const SearchPage = () => {
     };
 
     useEffect(() => {
+        parametersList.forEach((value) => {
+            const stored = getFromStorage(value);
+            if (stored != undefined) {
+                setSearchParams(p => {
+                    p.set(value, stored);
+                    return p;
+                });
+            }
+        });
         updateConcordance(state.page, state.pageSize);
     }, []);
 
@@ -105,12 +119,30 @@ const SearchPage = () => {
             <div className={styles.search_page__wrapper}>
                 <div className={styles.search_page__filters}>
                     <FiltersCard onApply={() => {
+                        parametersList.forEach((value) => {
+                            const stored = getFromStorage(value);
+                            if (stored != undefined) {
+                                setSearchParams(p => {
+                                    p.set(value, stored);
+                                    return p;
+                                });
+                            }
+                        });
                         updateConcordance(1, getMaximumCardsNumber(height, 200, 100))
                     }} />
                 </div>
                 <div className={styles.search_page__main_area_wrapper}>
                     <div>
                         <SearchBox onButtonClick={() => {
+                            parametersList.forEach((value) => {
+                                const stored = getFromStorage(value);
+                                if (stored != undefined) {
+                                    setSearchParams(p => {
+                                        p.set(value, stored);
+                                        return p;
+                                    });
+                                }
+                            });
                             updateConcordance(1, getMaximumCardsNumber(height, 200, 100))}
                         } />
                     </div>

@@ -41,7 +41,7 @@ export class UserApi {
      * @memberof UserApi
      */
     public async meGet() : Promise<AxiosResponse<UserDto>> {
-        let url = UserApi.baseUrl + '/me';
+        const url = UserApi.baseUrl + '/me';
 
         console.log(url)
 
@@ -60,7 +60,7 @@ export class UserApi {
      * @memberof UserApi
      */
     public async mePatch(patch: PatchRequest) : Promise<AxiosResponse<UserDto>> {
-        let url = UserApi.baseUrl + '/me';
+        const url = UserApi.baseUrl + '/me';
 
         return await axios.patch(url, patch, {
             withCredentials: true,
@@ -77,7 +77,7 @@ export class UserApi {
      * @memberof UserApi
      */
     public async userIdGet(userId: string) : Promise<AxiosResponse<UserDto>> {
-        let url = UserApi.baseUrl + `/${userId}`;
+        const url = UserApi.baseUrl + `/${userId}`;
 
         return await axios.get(url, {
             withCredentials: true,

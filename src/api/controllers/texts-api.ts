@@ -39,6 +39,7 @@ export class TextsApi {
                                 endYear?: number,
                                 author?: string) : Promise<AxiosResponse<ConcordanceDto>> {
         const url = TextsApi.baseUrl + '/concordance';
+        console.log(url)
 
         return await axios.get(url, {
             params: {

@@ -5,8 +5,8 @@ import {Contacts} from "../../components/Contacts/Contacts.tsx";
 import {ProfileIcon} from "../../components/ProfileIcon/ProfileIcon.tsx";
 import {useUserContext} from "../../context/UserContext.ts";
 import {useNavigate} from "react-router-dom";
-import {SEARCH_ROUTE} from "../../shared/consts.ts";
 import React from "react";
+import {SEARCH_ROUTE} from "../../shared/consts.ts";
 
 const MainPage = () => {
     const { user } = useUserContext();

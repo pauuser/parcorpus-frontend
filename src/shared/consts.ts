@@ -19,3 +19,5 @@ export const TEXT_ROUTE = "/text";
 export const TELEGRAM_LINK = "https://t.me/pauuserrr";
 export const INFORMATION_LINK = "https://github.com/pauuser/parcorpus/blob/main/docs/description-ru.md";
 export const GIT_LINK = "https://github.com/pauuser/parcorpus/tree/main";
+
+export const parametersList = [ "word", "sourceLanguage", "targetLanguage", "author", "startYear", "endYear", "genre" ];

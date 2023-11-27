@@ -29,8 +29,8 @@ const getAndSetUser = (userApi: UserApi,
 const AuthPage = () => {
     const [isLogInCard, setLogInCard] = useState<boolean>(true);
 
-    let navigate = useNavigate();
-    let { setIsSignedIn, setUser } = useUserContext();
+    const navigate = useNavigate();
+    const { setIsSignedIn, setUser } = useUserContext();
 
     const onSubmit = () => { }
     const form = useFormik({
@@ -66,7 +66,7 @@ const AuthPage = () => {
             }).then(
                 (result) => {
                     if (result?.status === 200) {
-                        let { access_token, refresh_token } = result.data;
+                        const { access_token, refresh_token } = result.data;
                         setAccessToken(access_token);
                         setRefreshToken(refresh_token);
 
@@ -89,7 +89,7 @@ const AuthPage = () => {
             }).then(
                 (result) => {
                     if (result?.status === 200) {
-                        let { access_token, refresh_token } = result.data;
+                        const { access_token, refresh_token } = result.data;
                         setAccessToken(access_token);
                         setRefreshToken(refresh_token);
 

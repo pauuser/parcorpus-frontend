@@ -1,9 +1,10 @@
 import {useUserContext} from "../../context/UserContext.ts";
 import {useEffect} from "react";
-import {UserApi} from "../../api";
+import {AuthApi, UserApi} from "../../api";
 import {MAIN_ROUTE} from "../../shared/consts.ts";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {authRoutes, noAuthRoutes} from "../../shared/routes.ts";
+import {getFromStorage, setAccessToken, setRefreshToken} from "../../shared/utils.ts";
 
 export const AppRouter = () => {
     const { isSignedIn, setIsSignedIn, setUser } = useUserContext();
@@ -18,9 +19,25 @@ export const AppRouter = () => {
                 }
             },
             (error) => {
-                console.log(error)
-                if (error.status === 401) {
-                    console.log('REFRESH!!')
+                const refresh = getFromStorage("refresh_token");
+                const access = getFromStorage("access_token");
+                if (error.code === 'ERR_BAD_REQUEST' && refresh != undefined && access != refresh) {
+                    const authApi = new AuthApi();
+                    authApi.refreshPost({
+                        access_token: access as string,
+                        refresh_token: refresh as string
+                    }).then(
+                        (result) => {
+                            setAccessToken(result.data.access_token);
+                            setRefreshToken(result.data.refresh_token);
+                            setIsSignedIn(true);
+                        },
+                        (error) => {
+                            console.log(error);
+                        }
+                    )
+                } else {
+                    console.log(error)
                 }
             }
         );

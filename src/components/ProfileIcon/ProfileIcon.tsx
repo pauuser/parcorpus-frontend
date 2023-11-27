@@ -9,7 +9,7 @@ interface ProfileIconParams {
 }
 
 export const ProfileIcon = ({ fullName }: ProfileIconParams) => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const routeChange = () => {
         navigate(PROFILE_ROUTE);
     };

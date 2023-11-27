@@ -34,9 +34,9 @@ export function AuthCard({name, fields,
         return elements.map(element => {
             if (Array.isArray(element))
             {
-                let values = element; // Inline elements are built here
+                const values = element; // Inline elements are built here
                 if ("values" in values[0]) {
-                    let selectors = values as SelectorField[];
+                    const selectors = values as SelectorField[];
                     return (<span className={styles.auth_card__inline}>
                     {selectors.map(value => (
                         <div className={styles.auth_card__field}>

@@ -1,7 +1,7 @@
 import {countries, regionalInfo} from "../../shared/regionalInfo.ts";
 
 export const authFields = (isLogInCard: boolean, form: any) => {
-    let fields =
+    const fields =
         isLogInCard
         ? [
             {

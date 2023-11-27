@@ -29,7 +29,7 @@ const SearchPage = () => {
     const [concordance, setConcordance ] = useState([] as ReactNode[]);
 
     const updateConcordance = (page: number, pageSize: number) => {
-        let api = new TextsApi();
+        const api = new TextsApi();
 
         api.concordanceGet(getFromStorage("word") as string,
             getFromStorage("sourceLanguage") as string,
@@ -41,13 +41,13 @@ const SearchPage = () => {
             Number(getFromStorage("endYear")),
             getFromStorage("author") as string).then(
             (result) => {
-                let concordance = result.data;
+                const concordance = result.data;
 
-                let {total_count, total_pages} = concordance.page_info;
-                let total = total_count;
+                const {total_count, total_pages} = concordance.page_info;
+                const total = total_count;
                 setState((prevState) => ({...prevState, page, pageSize, total, total_pages}));
 
-                let elements = concordance.items.map(item => {
+                const elements = concordance.items.map(item => {
                     return <ConcordanceElement word={item.aligned_word}
                                                sourceSentence={item.source_text}
                                                translatedSentence={item.aligned_translation}

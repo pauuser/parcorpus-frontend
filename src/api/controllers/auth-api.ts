@@ -20,7 +20,7 @@ export class AuthApi {
      * @memberof AuthApi
      */
     public async loginPost(body: LoginDto) : Promise<AxiosResponse<TokensDto>> {
-        let url = AuthApi.baseUrl + '/login';
+        const url = AuthApi.baseUrl + '/login';
         console.log(body.email);
         console.log(body.password);
 
@@ -34,7 +34,7 @@ export class AuthApi {
      * @memberof AuthApi
      */
     public async refreshPost(body: TokensDto) : Promise<AxiosResponse<TokensDto>> {
-        let url = AuthApi.baseUrl + '/refresh';
+        const url = AuthApi.baseUrl + '/refresh';
 
         return await axios.post(url, body);
     }
@@ -46,7 +46,7 @@ export class AuthApi {
      * @memberof AuthApi
      */
     public async registerPost(body: UserRegistrationDto) : Promise<AxiosResponse<TokensDto>> {
-        let url = AuthApi.baseUrl + '/register';
+        const url = AuthApi.baseUrl + '/register';
 
         return await axios.post(url, body);
     }

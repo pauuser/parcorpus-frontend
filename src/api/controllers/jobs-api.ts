@@ -19,7 +19,7 @@ export class JobsApi {
      * @memberof JobsApi
      */
     public async jobsGet(page: number, pageSize: number) : Promise<AxiosResponse<Array<JobDto>>> {
-        let url = JobsApi.baseUrl;
+        const url = JobsApi.baseUrl;
 
         return await axios.get(url, {
             params: {
@@ -40,7 +40,7 @@ export class JobsApi {
      * @memberof JobsApi
      */
     public async jobsIdGet(id: string) : Promise<AxiosResponse<JobDto>> {
-        let url = JobsApi.baseUrl + `/${id}`;
+        const url = JobsApi.baseUrl + `/${id}`;
 
         return await axios.get(url, {
             withCredentials: true,
@@ -73,9 +73,9 @@ export class JobsApi {
                                    genres: Array<string>,
                                    sourceText: Blob,
                                    targetText: Blob) : Promise<AxiosResponse<JobDto>> {
-        let url = JobsApi.baseUrl;
+        const url = JobsApi.baseUrl;
 
-        let formBody = new FormData();
+        const formBody = new FormData();
         formBody.append('SourceLanguageCode', sourceLanguageCode);
         formBody.append('TargetLanguageCode', targetLanguageCode);
         formBody.append('Title', title);

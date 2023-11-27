@@ -11,7 +11,7 @@ import {TextViewCard} from "../../components/TextViewCard/TextViewCard.tsx";
 const ProfilePage = () => {
     const {  user } = useUserContext();
 
-    let userDto = user as UserDto;
+    const userDto = user as UserDto;
 
     const [ isViewingText, setViewingText ] = useState(false);
     const [ textId, setTextId ] = useState(0);

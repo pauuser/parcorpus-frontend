@@ -21,7 +21,7 @@ export class UserApi {
      * @memberof UserApi
      */
     public async historyGet(page?: number, pageSize?: number) : Promise<AxiosResponse<SearchHistoryDto>> {
-        let url = UserApi.baseUrl + '/history';
+        const url = UserApi.baseUrl + '/history';
 
         return await axios.get(url, {
             params: {

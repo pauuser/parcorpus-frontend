@@ -38,7 +38,7 @@ export class TextsApi {
                                 startYear?: number,
                                 endYear?: number,
                                 author?: string) : Promise<AxiosResponse<ConcordanceDto>> {
-        let url = TextsApi.baseUrl + '/concordance';
+        const url = TextsApi.baseUrl + '/concordance';
 
         return await axios.get(url, {
             params: {
@@ -67,7 +67,7 @@ export class TextsApi {
      * @memberof TextsApi
      */
     public async textsGet(page?: number, pageSize?: number) : Promise<AxiosResponse<TextsDto>> {
-        let url = TextsApi.baseUrl + '/texts';
+        const url = TextsApi.baseUrl + '/texts';
 
         return await axios.get(url, {
             params: {
@@ -87,7 +87,7 @@ export class TextsApi {
      * @memberof TextsApi
      */
     public async textIdDelete(textId: number) : Promise<AxiosResponse<void>> {
-        let url = TextsApi.baseUrl + `/texts/${textId}`;
+        const url = TextsApi.baseUrl + `/texts/${textId}`;
 
         return await axios.delete(url, {
             withCredentials: true,
@@ -106,7 +106,7 @@ export class TextsApi {
      * @memberof TextsApi
      */
     public async textIdGet(textId: number, page?: number, pageSize?: number) : Promise<AxiosResponse<FullTextDto>> {
-        let url = TextsApi.baseUrl + `/texts/${textId}`;
+        const url = TextsApi.baseUrl + `/texts/${textId}`;
 
         console.log(pageSize);
 

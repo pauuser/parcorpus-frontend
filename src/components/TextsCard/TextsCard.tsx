@@ -28,18 +28,18 @@ export const TextsCard = (props: TextsCardProps) => {
     const [texts, setTexts ] = useState([] as ReactNode[]);
 
     const updateTexts = (page: number, pageSize: number) => {
-        let api = new TextsApi();
+        const api = new TextsApi();
 
         api.textsGet(page, pageSize).then(
             (result) => {
-                let textsDto = result.data;
+                const textsDto = result.data;
 
-                let {total_count, total_pages} = textsDto.page_info;
-                let total = total_count;
+                const {total_count, total_pages} = textsDto.page_info;
+                const total = total_count;
                 setState((prevState) => ({...prevState, page, pageSize, total, total_pages}));
                 
-                let elements = textsDto.items.map(text => {
-                    let info = {
+                const elements = textsDto.items.map(text => {
+                    const info = {
                         mainText: buildTextTitle(text.title, text.creation_year),
                         subText: buildTextSubtitle(text.author, text.source_language, text.target_language),
                         buttonIcon: Eye,

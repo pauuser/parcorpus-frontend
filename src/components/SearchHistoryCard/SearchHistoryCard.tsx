@@ -25,20 +25,20 @@ export const SearchHistoryCard = () => {
 
     const [history, setHistory ] = useState([] as ReactNode[]);
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const updateHistory = (page: number, pageSize: number) => {
-        let api = new UserApi();
+        const api = new UserApi();
 
         api.historyGet(page, pageSize).then(
             (result) => {
-                let searchHistory = result.data;
+                const searchHistory = result.data;
 
-                let {total_count, total_pages} = searchHistory.page_info;
-                let total = total_count;
+                const {total_count, total_pages} = searchHistory.page_info;
+                const total = total_count;
                 setState((prevState) => ({...prevState, page, pageSize, total, total_pages}));
 
-                let elements = searchHistory.items.map(history => {
-                    let info = {
+                const elements = searchHistory.items.map(history => {
+                    const info = {
                         mainText: history.word,
                         subText: buildLanguagesString(history.source_language_short_name, history.destination_language_short_name),
                         buttonIcon: Magnifier,

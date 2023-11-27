@@ -30,19 +30,19 @@ export const TextViewCard = (props: TextViewCardProps) => {
     const [title, setTitle] = useState("");
 
     const updateSentences = (page: number, pageSize: number) => {
-        let api = new TextsApi();
+        const api = new TextsApi();
         console.log(page, pageSize);
 
         api.textIdGet(props.textId, page, pageSize).then(
             (result) => {
-                let sentencesDto = result.data;
+                const sentencesDto = result.data;
 
-                let {total_count, total_pages} = sentencesDto.page_info;
-                let total = total_count;
+                const {total_count, total_pages} = sentencesDto.page_info;
+                const total = total_count;
                 setState((prevState) => ({...prevState, page, pageSize, total, total_pages}));
 
-                let elements = sentencesDto.text.sentences.map(sentence => {
-                    let info = {
+                const elements = sentencesDto.text.sentences.map(sentence => {
+                    const info = {
                         sourceText: sentence.source_text,
                         targetText: sentence.aligned_translation
                     };

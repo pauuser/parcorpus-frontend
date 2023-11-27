@@ -19,7 +19,8 @@ export const ProfileElementCard = (props: ElementProps) => {
                     {props.subText}
                 </span>
             </div>
-            <Button size="xl">
+            <Button size="xl"
+                    onClick={props.buttonOnClick}>
                 <props.buttonIcon className={styles.profile_element_card__button} />
             </Button>
         </div>

@@ -4,12 +4,22 @@ import {SearchBox} from "../../components/SearchBox/SearchBox.tsx";
 import {Contacts} from "../../components/Contacts/Contacts.tsx";
 import {ProfileIcon} from "../../components/ProfileIcon/ProfileIcon.tsx";
 import {useUserContext} from "../../context/UserContext.ts";
+import {useNavigate} from "react-router-dom";
+import {SEARCH_ROUTE} from "../../shared/consts.ts";
+import React from "react";
 
 const MainPage = () => {
     const { user } = useUserContext();
+    const navigate = useNavigate();
+
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            navigate(SEARCH_ROUTE);
+        }
+    }
 
     return (
-        <div className={styles.main}>
+        <div className={styles.main} onKeyDown={handleKeyDown}>
             <div className={styles.main_upperbar}>
                 <ParcorpusLogo />
                 <ProfileIcon fullName={user?.name}/>
@@ -29,7 +39,7 @@ const MainPage = () => {
                     </div>
                 </div>
                 <div className={styles.main__search_box_wrapper}>
-                    <SearchBox/>
+                    <SearchBox onButtonClick={() => navigate(SEARCH_ROUTE)}/>
                 </div>
             </div>
             <Contacts />

@@ -5,6 +5,7 @@ import { TextsDto } from '../dto';
 import { BACKEND_URL, BACKEND_TEXTS_ROUTE } from "../../shared/consts.ts";
 import axios from "axios";
 import { getAccessToken } from "../../shared/utils.ts";
+import {regionalInfo} from "../../shared/regionalInfo.ts";
 
 /**
  * TextsApi client
@@ -34,22 +35,22 @@ export class TextsApi {
                                 page?: number,
                                 pageSize?: number,
                                 genre?: string,
-                                startYear?: Date,
-                                endYear?: Date,
-                                author?: string) : Promise<AxiosResponse<Array<ConcordanceDto>>> {
+                                startYear?: number,
+                                endYear?: number,
+                                author?: string) : Promise<AxiosResponse<ConcordanceDto>> {
         let url = TextsApi.baseUrl + '/concordance';
 
         return await axios.get(url, {
             params: {
                 Word: word,
-                SourceLanguageShortName: sourceLanguageShortName,
-                TargetLanguageShortName: targetLanguageShortName,
-                "Filter.Genre": genre,
-                "Filter.StartYear": startYear,
-                "Filter.EndYear": endYear,
-                "Filter.Author": author,
+                SourceLanguageShortName: regionalInfo[sourceLanguageShortName],
+                TargetLanguageShortName: regionalInfo[targetLanguageShortName],
+                "Filter.Genre": genre == "-" || genre == undefined ? undefined : genre,
+                "Filter.StartYear": startYear == 0 || startYear == undefined ? undefined : startYear,
+                "Filter.EndYear": endYear == 0 || endYear == undefined ? undefined : endYear,
+                "Filter.Author": author == "-" || author == undefined ? undefined : author,
                 page: page,
-                pageSize: pageSize
+                page_size: pageSize
             },
             withCredentials: true,
             headers: {
@@ -65,13 +66,13 @@ export class TextsApi {
      * @param {number} [pageSize] Size of the requested page (default is 20, but must be between 3 and 50)
      * @memberof TextsApi
      */
-    public async textsGet(page?: number, pageSize?: number) : Promise<AxiosResponse<Array<TextsDto>>> {
+    public async textsGet(page?: number, pageSize?: number) : Promise<AxiosResponse<TextsDto>> {
         let url = TextsApi.baseUrl + '/texts';
 
         return await axios.get(url, {
             params: {
                 page: page,
-                pageSize: pageSize
+                page_size: pageSize
             },
             withCredentials: true,
             headers: {
@@ -107,10 +108,12 @@ export class TextsApi {
     public async textIdGet(textId: number, page?: number, pageSize?: number) : Promise<AxiosResponse<FullTextDto>> {
         let url = TextsApi.baseUrl + `/texts/${textId}`;
 
+        console.log(pageSize);
+
         return await axios.get(url, {
             params: {
                 page: page,
-                pageSize: pageSize
+                page_size: pageSize
             },
             withCredentials: true,
             headers: {

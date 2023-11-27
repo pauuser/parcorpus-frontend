@@ -12,7 +12,7 @@ export interface ConcordanceDto {
      * @type {PageInfoDto}
      * @memberof ConcordanceDto
      */
-    pageInfo: PageInfoDto;
+    page_info: PageInfoDto;
 
     /**
      * The concordance with respect to paging

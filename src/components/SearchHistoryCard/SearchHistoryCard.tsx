@@ -5,7 +5,9 @@ import {Magnifier} from "@gravity-ui/icons";
 import {Pagination, PaginationProps} from '@gravity-ui/uikit';
 import React, {ReactNode, useEffect, useState} from "react";
 import {UserApi} from "../../api";
-import {buildLanguagesString} from "../../shared/utils.ts";
+import {buildLanguagesString, saveToStorage} from "../../shared/utils.ts";
+import {languagesInverse} from "../../shared/regionalInfo.ts";
+import {useNavigate} from "react-router-dom";
 
 export const SearchHistoryCard = () => {
     const [state, setState] = React.useState({page: 1, pageSize: 5, total: 10, total_pages: 2});
@@ -17,6 +19,7 @@ export const SearchHistoryCard = () => {
 
     const [history, setHistory ] = useState([] as ReactNode[]);
 
+    let navigate = useNavigate();
     const updateHistory = (page: number, pageSize: number) => {
         let api = new UserApi();
 
@@ -33,7 +36,12 @@ export const SearchHistoryCard = () => {
                         mainText: history.word,
                         subText: buildLanguagesString(history.source_language_short_name, history.destination_language_short_name),
                         buttonIcon: Magnifier,
-                        buttonOnClick: () => {}
+                        buttonOnClick: () => {
+                            saveToStorage("word", history.word);
+                            saveToStorage("sourceLanguage", languagesInverse[history.source_language_short_name]);
+                            saveToStorage("targetLanguage", languagesInverse[history.destination_language_short_name]);
+                            navigate('/search');
+                        }
                     };
 
                     return <ProfileElementCard {...info}/>

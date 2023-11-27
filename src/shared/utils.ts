@@ -19,3 +19,27 @@ export const setRefreshToken = (refreshToken: string) => {
 export const buildLanguagesString = (srcLanguageShortName: string, destLanguageShortName: string) => {
     return `${languagesInverse[srcLanguageShortName]} → ${languagesInverse[destLanguageShortName]}`;
 }
+
+export const buildTextSubtitle = (author: string, srcLanguageShortName: string, destLanguageShortName: string) => {
+    return `${author}, ${buildLanguagesString(srcLanguageShortName, destLanguageShortName)}`;
+}
+
+export const buildTextTitle = (title: string, year: number) => {
+    return `${title} (${year})`;
+}
+
+export const buildSentences = (sourceSentence: string, translatedSentence: string) => {
+    return `${sourceSentence} - ${translatedSentence}`;
+}
+
+export const buildAuthorTitle = (title: string, author: string) => {
+    return `${author} (${title})`;
+}
+
+export const saveToStorage = (key: string, value: string) => {
+    localStorage.setItem(key, value);
+}
+
+export const getFromStorage = (key: string) => {
+    return localStorage.getItem(key);
+}

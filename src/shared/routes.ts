@@ -1,9 +1,8 @@
-import {AUTH_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, SEARCH_ROUTE, TEXT_ROUTE} from "./consts.ts";
+import {AUTH_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, SEARCH_ROUTE} from "./consts.ts";
 import AuthPage from "../pages/AuthPage/auth-page.tsx";
 import MainPage from "../pages/MainPage/main-page.tsx";
 import SearchPage from "../pages/SearchPage/search-page.tsx";
 import ProfilePage from "../pages/ProfilePage/profile-page.tsx";
-import TextPage from "../pages/TextPage/text-page.tsx";
 
 export const authRoutes = [
     {
@@ -17,10 +16,6 @@ export const authRoutes = [
     {
         path: MAIN_ROUTE,
         element: MainPage,
-    },
-    {
-        path: TEXT_ROUTE,
-        element: TextPage
     }
 ];
 
@@ -31,18 +26,14 @@ export const noAuthRoutes = [
     },
     {
         path: SEARCH_ROUTE,
-        element: SearchPage,
+        element: AuthPage,
     },
     {
         path: PROFILE_ROUTE,
-        element: ProfilePage,
+        element: AuthPage,
     },
     {
         path: MAIN_ROUTE,
         element: MainPage,
-    },
-    {
-        path: TEXT_ROUTE,
-        element: TextPage
     }
 ];

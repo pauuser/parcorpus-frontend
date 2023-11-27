@@ -9,23 +9,25 @@ import { TextDto } from './TextDto.ts';
  */
 export interface FullTextDto {
     /**
-     * Text information without sentences
-     * @type {TextDto}
-     * @memberof FullTextDto
-     */
-    text: TextDto;
-
-    /**
      * Paging information
      * @type {PageInfoDto}
      * @memberof FullTextDto
      */
-    pageInfo: PageInfoDto;
+    page_info: PageInfoDto;
 
-    /**
-     * Sentences
-     * @type {Array<SentenceDto>}
-     * @memberof FullTextDto
-     */
-    sentences: Array<SentenceDto>;
+    text: {
+        /**
+         * Text information without sentences
+         * @type {TextDto}
+         * @memberof FullTextDto
+         */
+        text: TextDto;
+
+        /**
+         * Sentences
+         * @type {Array<SentenceDto>}
+         * @memberof FullTextDto
+         */
+        sentences: Array<SentenceDto>;
+    }
 }

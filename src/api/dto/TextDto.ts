@@ -9,7 +9,7 @@ export interface TextDto {
      * @type {number}
      * @memberof TextDto
      */
-    textId: number;
+    text_id: number;
 
     /**
      * Text title
@@ -37,33 +37,33 @@ export interface TextDto {
      * @type {number}
      * @memberof TextDto
      */
-    creationYear: number;
+    creation_year: number;
 
     /**
      * Add date
      * @type {Date}
      * @memberof TextDto
      */
-    addDate: Date;
+    add_date: Date;
 
     /**
      * Source language short name
      * @type {string}
      * @memberof TextDto
      */
-    sourceLanguage: string;
+    source_language: string;
 
     /**
      * Target language short name
      * @type {string}
      * @memberof TextDto
      */
-    targetLanguage: string;
+    target_language: string;
 
     /**
      * User Id of the user who uploaded the text
      * @type {string}
      * @memberof TextDto
      */
-    addedBy: string;
+    added_by: string;
 }

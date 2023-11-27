@@ -12,7 +12,7 @@ export interface TextsDto {
      * @type {PageInfoDto}
      * @memberof TextsDto
      */
-    pageInfo: PageInfoDto;
+    page_info: PageInfoDto;
 
     /**
      * The texts

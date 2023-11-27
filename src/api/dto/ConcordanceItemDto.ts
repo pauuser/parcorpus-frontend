@@ -9,28 +9,28 @@ export interface ConcordanceItemDto {
      * @type {string}
      * @memberof ConcordanceItemDto
      */
-    sourceWord: string;
+    source_word: string;
 
     /**
      * Aligned word
      * @type {string}
      * @memberof ConcordanceItemDto
      */
-    alignedWord: string;
+    aligned_word: string;
 
     /**
      * Source text
      * @type {string}
      * @memberof ConcordanceItemDto
      */
-    sourceText: string;
+    source_text: string;
 
     /**
      * Aligned translation
      * @type {string}
      * @memberof ConcordanceItemDto
      */
-    alignedTranslation: string;
+    aligned_translation: string;
 
     /**
      * Source text title
@@ -58,12 +58,12 @@ export interface ConcordanceItemDto {
      * @type {number}
      * @memberof ConcordanceItemDto
      */
-    creationYear: number;
+    creation_year: number;
 
     /**
      * When the text was added to the database
      * @type {Date}
      * @memberof ConcordanceItemDto
      */
-    addDate: Date;
+    add_date: Date;
 }

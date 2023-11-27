@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center;
 }
 
 .search_history_card__label {
@@ -13,6 +12,7 @@
     min-height: 35px;
     font-family: Montserrat, serif;
     font-weight: 500;
+    max-width: 150px;
 }
 
 .search_history_card__top_element {

@@ -6,7 +6,6 @@
     justify-content: center;
     flex-wrap: wrap;
     min-width: 60%;
-    max-width: 80%
 }
 
 .searchBox__selectors {
@@ -33,7 +32,7 @@
     color: #281B15;
 }
 
-.auth_card__select_popup{
+.auth_card__select_popup {
     background: #F0F0F0;
     min-width: calc(min(250px, 60vw));
     border-radius: 8px;

@@ -9,12 +9,12 @@ export interface WordPairDto {
      * @type {string}
      * @memberof WordPairDto
      */
-    sourceWord: string;
+    source_word: string;
 
     /**
      * Aligned translation
      * @type {string}
      * @memberof WordPairDto
      */
-    targetWord: string;
+    target_word: string;
 }

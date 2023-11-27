@@ -11,21 +11,21 @@ export interface SentenceDto {
      * @type {number}
      * @memberof SentenceDto
      */
-    sentenceId: number;
+    sentence_id: number;
 
     /**
      * New sentence source text
      * @type {string}
      * @memberof SentenceDto
      */
-    sourceText: string;
+    source_text: string;
 
     /**
      * New sentence aligned translation
      * @type {string}
      * @memberof SentenceDto
      */
-    alignedTranslation: string;
+    aligned_translation: string;
 
     /**
      * Aligned words in sentence

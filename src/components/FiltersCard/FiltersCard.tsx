@@ -17,8 +17,8 @@ export const FiltersCard = (props: FiltersCardProps) => {
                     <Label className={styles.filters_card__title}>Filters</Label>
                 </span>
                 <span className={styles.filters_card__years}>
-                    <YearInput name="Start year" defaultValue={getFromStorage("startYear")} fieldName="startYear"/>
-                    <YearInput name="End year" defaultValue={getFromStorage("endYear")} fieldName="endYear"/>
+                    <YearInput name="Start year" defaultValue={getFromStorage("startYear") == null ? 0 : getFromStorage("startYear") as unknown as number} fieldName="startYear"/>
+                    <YearInput name="End year" defaultValue={getFromStorage("endYear") == null ? 0 : getFromStorage("startYear") as unknown as number} fieldName="endYear"/>
                 </span>
                 <NamedSelect fieldName="Genre"
                              selectName="genre"

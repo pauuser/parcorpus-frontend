@@ -21,7 +21,7 @@ export const AppRouter = () => {
             (error) => {
                 const refresh = getFromStorage("refresh_token");
                 const access = getFromStorage("access_token");
-                if (error.code === 'ERR_BAD_REQUEST' && refresh != undefined && access != refresh) {
+                if (refresh != undefined && access != refresh) {
                     const authApi = new AuthApi();
                     authApi.refreshPost({
                         access_token: access as string,

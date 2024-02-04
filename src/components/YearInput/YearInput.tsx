@@ -17,7 +17,7 @@ export const YearInput = (props: InputProps) => {
                        name={props.fieldName}
                        onChange={(val) => saveToStorage(props.fieldName, val.target.value)}
                        className={styles.year_input__box}
-                       defaultValue={props.defaultValue.toString()}/>
+                       defaultValue={props.defaultValue?.toString()}/>
         </div>
     );
 };

@@ -6,7 +6,7 @@ export const BACKEND_TEXTS_ROUTE: string = "/texts";
 export const BACKEND_AUTH_ROUTE: string = "/auth";
 
 export const BACKEND_IP = location.hostname;
-export const BACKEND_PORT = 5163;
+export const BACKEND_PORT = 80;
 export const HOST_URL = "http://" + BACKEND_IP + ":" + BACKEND_PORT;
 export const BACKEND_URL = HOST_URL + API_URL;
 
